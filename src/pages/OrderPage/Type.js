@@ -23,7 +23,7 @@ function Type({ orderType }) {
   if (error) {
     return <ErrorBanner message="에러가 발생했습니다." />;
   }
-  const ItemComponent = orderType === 'products' ? Products : null;
+  const ItemComponent = orderType === 'products' ? Products : Options;
   const optionItems = items.map((item) => {
     return (
       <ItemComponent
