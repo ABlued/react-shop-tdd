@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Type from './pages/OrderPage/Type';
+import OrderPage from './pages/OrderPage/OrderPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Type />
+    <OrderPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
