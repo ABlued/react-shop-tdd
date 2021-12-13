@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Products from './Products';
 import ErrorBanner from '../../components/ErrorBanner';
 import Options from './Options';
+import { OrderContext } from '../../contexts/OrderContext';
 
 function Type({ orderType }) {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
+  const [orderDatas, updateItemCount] = useContext(OrderContext);
   useEffect(() => {
     loadItems(orderType);
   }, [orderType]);
@@ -30,6 +32,9 @@ function Type({ orderType }) {
         key={item.name}
         name={item.name}
         imagePath={item.imagePath}
+        updateItemCount={(itemName, newItemCount) =>
+          updateItemCount(itemName, newItemCount, orderType)
+        }
       />
     );
   });
@@ -37,7 +42,7 @@ function Type({ orderType }) {
     <>
       <h2>주문 종류</h2>
       <p>하나의 가격</p>
-      <p>상품 총 가격:</p>
+      <p>상품 총 가격: {orderDatas.totals[orderType]}</p>
       <div
         style={{
           display: 'flex',
