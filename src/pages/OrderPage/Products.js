@@ -17,6 +17,7 @@ function Products({ name, imagePath, updateItemCount }) {
           {name}
         </label>
         <input
+          id={name}
           style={{ marginLeft: 7 }}
           type="number"
           name="quantity"
